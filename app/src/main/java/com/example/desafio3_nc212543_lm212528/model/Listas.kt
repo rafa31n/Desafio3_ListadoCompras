@@ -43,6 +43,17 @@ class Listas(context: Context?) {
         valores.put(Listas.COL_TITULO, titulo_lista)
         return valores
     }
+    fun addNewTematica(
+        fecha_lista: String?,
+        titulo_lista: String?
+
+    ) {
+        db!!.insert(
+            TABLE_NAME_LISTAS,
+            null,
+            generarContentValues(fecha_lista, titulo_lista)
+        )
+    }
 
     //Agregar un nuevo registro
     /*fun addNewFicha(

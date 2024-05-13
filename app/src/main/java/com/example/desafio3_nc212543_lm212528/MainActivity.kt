@@ -1,101 +1,70 @@
 package com.example.desafio3_nc212543_lm212528
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.TextView
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.desafio3_nc212543_lm212528.model.Comprados
 import com.example.desafio3_nc212543_lm212528.model.Listas
+
 
 class MainActivity : AppCompatActivity() {
     private var managerListas: Listas? = null
     private var managerComprados: Comprados? = null
 
+    @SuppressLint("Range", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewlista)
+        val btnNuevaLista = findViewById<Button>(R.id.fabAgregarLista)
+        btnNuevaLista.setOnClickListener{
+            val intent = Intent(this, NuevaLista::class.java)
+            startActivity(intent)
+        }
+        managerListas= Listas(this)
+       /* managerListas!!.addNewTematica("2052","prueba121")*/
+        val cursor = managerListas!!.searchFichasAll()
+        if (cursor != null && cursor.moveToFirst()) {
+            val listas = mutableListOf<Lista>()
+            var id_lista: Int = 0
 
-        managerListas = Listas(this)
-        managerComprados = Comprados(this)
+            var fecha_lista: String = ""
+            var titulo_lista: String = ""
 
-        val cursorL = managerListas!!.searchFichasAll()
-        if (cursorL != null && cursorL.moveToFirst()) {
-            /*val tematicas = mutableListOf<Tematica>()
-            var idTematica: Int = 0
-            var nombreTematica: String = ""
-            var descripcionTematica: String = ""
-            var colorTematica: String = ""
 
             while (!cursor.isAfterLast) {
                 // Obtener datos del cursor y establecerlos en las vistas
-                idTematica = cursor.getInt(cursor.getColumnIndex("id_tematica"))
-                nombreTematica = cursor.getString(cursor.getColumnIndex("nombre"))
-                descripcionTematica = cursor.getString(cursor.getColumnIndex("descripcion"))
-                colorTematica = cursor.getString(cursor.getColumnIndex("color"))
+                id_lista = cursor.getInt(cursor.getColumnIndex("id_lista"))
+                fecha_lista = cursor.getString(cursor.getColumnIndex("fecha_lista"))
+                titulo_lista = cursor.getString(cursor.getColumnIndex("titulo_lista"))
 
-                val tematica =
-                    Tematica(
-                        idTematica,
-                        nombreTematica,
-                        descripcionTematica,
-                        colorTematica
+
+                val lista =
+                    Lista(
+                        id_lista,
+                        fecha_lista,
+                        titulo_lista,
+
                     )
-                tematicas.add(tematica)
+                listas.add(lista)
                 cursor.moveToNext()
             }
-            recyclerView.layoutManager = LinearLayoutManager(this@Dashboard)
-            recyclerView.adapter = TematicaAdapter(tematicas, colorTematica)*/
-            cursorL.close()
-        } else {
+            recyclerView.layoutManager=LinearLayoutManager(this@MainActivity)
+            recyclerView.adapter = AdapterLista(listas)
+            cursor.close()
+        }else{
             Toast.makeText(
-                this, "No se encontro ninguna LISTA.",
+                this, "No se encontro ninguna ficha.",
                 Toast.LENGTH_LONG
             ).show()
         }
-
-        //
-
-        val cursorC = managerComprados!!.searchTematicasAll()
-        if (cursorC != null && cursorC.moveToFirst()) {
-            /*val tematicas = mutableListOf<Tematica>()
-            var idTematica: Int = 0
-            var nombreTematica: String = ""
-            var descripcionTematica: String = ""
-            var colorTematica: String = ""
-
-            while (!cursor.isAfterLast) {
-                // Obtener datos del cursor y establecerlos en las vistas
-                idTematica = cursor.getInt(cursor.getColumnIndex("id_tematica"))
-                nombreTematica = cursor.getString(cursor.getColumnIndex("nombre"))
-                descripcionTematica = cursor.getString(cursor.getColumnIndex("descripcion"))
-                colorTematica = cursor.getString(cursor.getColumnIndex("color"))
-
-                val tematica =
-                    Tematica(
-                        idTematica,
-                        nombreTematica,
-                        descripcionTematica,
-                        colorTematica
-                    )
-                tematicas.add(tematica)
-                cursor.moveToNext()
-            }
-            recyclerView.layoutManager = LinearLayoutManager(this@Dashboard)
-            recyclerView.adapter = TematicaAdapter(tematicas, colorTematica)*/
-            cursorC.close()
-        } else {
-            Toast.makeText(
-                this, "No se encontro ningun ITEM DE COMPRA.",
-                Toast.LENGTH_LONG
-            ).show()
-        }
-
-
     }
+
 }
