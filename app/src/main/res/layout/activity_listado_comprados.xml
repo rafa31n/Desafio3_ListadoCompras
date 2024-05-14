@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="Lista de compras"
+            android:text="Lista de items"
             android:textAlignment="center"
             android:textColor="@color/blanco"
             android:textSize="24sp" />
@@ -26,16 +26,32 @@
 
 
     <Button
-        android:id="@+id/fabAgregarLista"
+        android:id="@+id/btnAgregarComprados"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Agregar nueva lista"
-        android:backgroundTint="#89332b"/>
+        android:backgroundTint="#89332b"
+        android:text="Agregar item" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewlista"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="15dp" />
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewComprados"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:id="@+id/txtMensaje"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="23dp"
+            android:text="No hay items en esta lista"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:visibility="gone" />
+    </RelativeLayout>
 </LinearLayout>

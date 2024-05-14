@@ -11,26 +11,35 @@
         android:layout_centerInParent="true">
 
         <EditText
-            android:id="@+id/editTextDescripcion"
+            android:id="@+id/editTextNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Titulo lista de compras"
+            android:hint="Nombre item"
+            android:minLines="3" />
+
+        <EditText
+            android:id="@+id/editTextCantidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextNombre"
+            android:hint="Cantidad"
+            android:inputType="number"
             android:minLines="3" />
 
         <Button
-            android:id="@+id/btnGuardarTematica"
+            android:id="@+id/btnGuardarItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editTextDescripcion"
+            android:layout_below="@+id/editTextCantidad"
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/green"
-            android:text="Añadir lista" />
+            android:text="Añadir item" />
 
         <Button
             android:id="@+id/buttonCancelar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/btnGuardarTematica"
+            android:layout_below="@id/btnGuardarItem"
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/gris"
             android:text="Cancelar" />

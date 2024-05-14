@@ -50,17 +50,17 @@ class Comprados(context: Context?) {
     }
 
     //Agregar un nuevo registro
-    /*fun addNewTematica(
+    fun addNewComprado(
+        idLista: Int?,
         nombre: String?,
-        descripcion: String?,
-        color: String?,
+        cantidad: Int?
     ) {
         db!!.insert(
-            TABLE_NAME_TEMATICAS,
+            TABLE_NAME_COMPRADOS,
             null,
-            generarContentValues(nombre, descripcion, color)
+            generarContentValues(idLista, nombre, cantidad)
         )
-    }*/
+    }
 
     // Eliminar un registro
     fun eliminarComprado(id: Int) {
@@ -83,16 +83,15 @@ class Comprados(context: Context?) {
     }
 
     // Mostrar un registro particular
-    /*fun searchProducto(id: Int): Cursor? {
+    fun searchCompradosDeLista(id: String?): Cursor? {
         val columns = arrayOf(
-            COL_ID, COL_IDCATEGORIA, COL_DESCRIPCION, COL_PRECIO,
-            COL_CANTIDAD
+            COL_ID, COL_IDLISTACOMPRA, COL_NOMBRE, COL_CANTIDAD
         )
         return db!!.query(
-            TABLE_NAME_PRODUCTOS, columns,
-            "$COL_ID=?", arrayOf(id.toString()), null, null, null
+            TABLE_NAME_COMPRADOS, columns,
+            "$COL_IDLISTACOMPRA=?", arrayOf(id.toString()), null, null, null
         )
-    }*/
+    }
 
     // Mostrar todos los registros
     fun searchTematicasAll(): Cursor? {

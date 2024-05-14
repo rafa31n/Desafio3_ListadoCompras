@@ -46,7 +46,6 @@ class Listas(context: Context?) {
     fun addNewTematica(
         fecha_lista: String?,
         titulo_lista: String?
-
     ) {
         db!!.insert(
             TABLE_NAME_LISTAS,
@@ -54,20 +53,6 @@ class Listas(context: Context?) {
             generarContentValues(fecha_lista, titulo_lista)
         )
     }
-
-    //Agregar un nuevo registro
-    /*fun addNewFicha(
-        id_tematica: Int?,
-        anverso: String?,
-        enverso: String?,
-        pistas: String?
-    ) {
-        db!!.insert(
-            TABLE_NAME_FICHAS,
-            null,
-            generarContentValues(id_tematica, anverso, enverso, pistas)
-        )
-    }*/
 
     // Eliminar un registro
     fun eliminarLista(id: Int) {

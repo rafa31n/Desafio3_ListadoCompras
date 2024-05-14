@@ -10,54 +10,25 @@
     <LinearLayout
         android:id="@+id/contenedorFicha"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:orientation="vertical"
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/textViewANVERSO"
+            android:id="@+id/textViewTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ANVERSO"
+            android:text="Titulo"
             android:textColor="@android:color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textViewENVERSO"
+            android:id="@+id/textViewFecha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ENVERSO"
+            android:text="Fecha"
             android:textColor="@android:color/black"
             android:textSize="14sp" />
-
-        <!-- Botones -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnEditar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
-
-                android:gravity="center"
-                android:text="Editar"
-                />
-
-            <Button
-                android:id="@+id/btnEliminar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
-
-                android:gravity="center"
-                android:text="eliminar"
-                />
-        </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
