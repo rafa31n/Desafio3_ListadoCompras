@@ -17,11 +17,27 @@
             android:hint="Titulo lista de compras"
             android:minLines="3" />
 
+        <TextView
+            android:id="@+id/tvSelectedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextDescripcion"
+            android:padding="8dp"
+            android:text="Fecha de compra"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnShowDatePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvSelectedDate"
+            android:text="Seleccionar fecha" />
+
         <Button
             android:id="@+id/btnGuardarTematica"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editTextDescripcion"
+            android:layout_below="@+id/btnShowDatePicker"
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/green"
             android:text="Añadir lista" />

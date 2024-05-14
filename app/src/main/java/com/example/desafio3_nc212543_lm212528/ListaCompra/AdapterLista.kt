@@ -12,6 +12,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desafio3_nc212543_lm212528.Comprados.ListadoComprados
 import com.example.desafio3_nc212543_lm212528.R
+import com.example.desafio3_nc212543_lm212528.model.Comprados
 import com.example.desafio3_nc212543_lm212528.model.Listas
 
 class AdapterLista(
@@ -19,6 +20,7 @@ class AdapterLista(
 
     ) : RecyclerView.Adapter<AdapterLista.ViewHolder>() {
     private var managerListas: Listas? = null
+    private var managerCompras: Comprados? = null
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textViewTitulo: TextView = itemView.findViewById(R.id.textViewTitulo)
@@ -28,6 +30,7 @@ class AdapterLista(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         managerListas = Listas(parent.context)
+        managerCompras = Comprados(parent.context)
         val view =
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.activity_adapter_lista, parent, false)
@@ -78,6 +81,8 @@ class AdapterLista(
                     context, "Lista ${lista.listaTitulo} eliminada.",
                     Toast.LENGTH_SHORT
                 ).show()
+                // Eliminar todas las fichas de la tematica
+                lista.idLista?.let { managerCompras?.eliminarCompradosLista(it) }
             }
             .setNegativeButton("Editar") { dialog, which ->
                 val intent = Intent(context, EditarListaCompra::class.java)

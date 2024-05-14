@@ -104,4 +104,9 @@ class Comprados(context: Context?) {
             "${Comprados.COL_NOMBRE} ASC"
         )
     }
+
+    fun eliminarCompradosLista(id: Int) {
+        db!!.delete(TABLE_NAME_COMPRADOS, "$COL_IDLISTACOMPRA=?", arrayOf(id.toString()))
+        db!!.close()
+    }
 }
